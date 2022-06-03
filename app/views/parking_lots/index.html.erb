@@ -1,0 +1,26 @@
+<p style="color: green"><%= notice %></p>
+<%= link_to "Create Parking Lot", new_parking_lot_path %>
+
+<h1>Parking lots</h1>
+
+<div id="parking_lots">
+  <table>
+    <tr>
+      <th> Parking Lot </th>
+      <th> Maximum Slots </th>
+    </tr>
+
+    <% @parking_lots.each do |parking_lot| %>
+      <%#= render parking_lot %>
+      <tr>
+        <td>
+          <%= link_to "Parking #{parking_lot.id}", parking_lot %>
+        </td>
+        <td>
+          <%= parking_lot.max_spots %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+

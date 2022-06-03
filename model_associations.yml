@@ -1,0 +1,25 @@
+# Model Associations
+- ParkingLot:
+  - id
+  - max_spots
+
+- ParkingSpot:
+  - id
+  - parking_lot_id
+  - entrance_id
+
+- ParkingEntrance:
+  - id
+  - parking_lot_id
+
+- Ticket:
+  - id
+  - parking_lot_id
+  - car_id
+  - entrance_id
+  - parking_spot_id
+
+- Car:
+  - id
+  - color
+  - registration_no
