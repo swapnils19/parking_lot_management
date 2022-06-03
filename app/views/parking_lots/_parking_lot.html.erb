@@ -1,7 +1,9 @@
 <div id="<%= dom_id parking_lot %>">
-  <b> Parking <%= parking_lot.id %> </b>
-  <br/>
   <p>
+    <b> Parking <%= parking_lot.id %> </b>
+    <br/>
     Maximim spots: <%= parking_lot.max_spots %>
+    <br/>
+    <%= button_to 'View Entrances', parking_lot_entrances_url(parking_lot), method: :get %>
   </p>
 </div>

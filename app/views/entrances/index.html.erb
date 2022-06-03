@@ -1,0 +1,25 @@
+<p style="color: green"><%= notice %></p>
+<%= link_to "Create entrance", new_parking_lot_entrance_path %>
+<br/>
+<%= link_to "Back to Parking", parking_lot_path(@parking_lot) %>
+
+<h1>Entrances for Parking <%= @parking_lot.id %></h1>
+
+<div id="entrances">
+  <table>
+    <tr>
+      <th> Sr. no. </th>
+      <th> Action </th>
+    </tr>
+
+    <% @entrances.each_with_index do |entrance, i| %>
+      <tr>
+        <td> <%= i + 1 %> </td>
+        <td>
+          <%= button_to "Delete this entrance", parking_lot_entrance_path(id: entrance.id), method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+

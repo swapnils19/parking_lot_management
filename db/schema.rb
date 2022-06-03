@@ -10,11 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_03_131505) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_03_194121) do
+  create_table "entrances", force: :cascade do |t|
+    t.integer "parking_lot_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["parking_lot_id"], name: "index_entrances_on_parking_lot_id"
+  end
+
   create_table "parking_lots", force: :cascade do |t|
     t.integer "max_spots"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "entrances", "parking_lots"
 end
