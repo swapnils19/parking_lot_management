@@ -16,7 +16,7 @@
   - id
   - parking_lot_id
   - car_id
-  - entrance_id
+  # - entrance_id
   - parking_spot_id
 
 - Car:

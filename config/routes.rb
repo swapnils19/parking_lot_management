@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :cars, except: %i[edit update]
   resources :parking_lots do
+    resources :tickets, except: %i[edit update]
     resources :entrances, expect: %i[update edit show]
     resources :spots, expect: %i[update edit show]
   end

@@ -1,0 +1,30 @@
+<p style="color: green"><%= notice %></p>
+
+<%= link_to "Create Ticket", new_parking_lot_ticket_path(@parking_lot) %>
+<br/>
+<%= link_to "Back to Parking", parking_lot_path(@parking_lot) %>
+
+<h3>Tickets for Parking <%= @parking_lot.id %> </h3>
+
+<div id="tickets">
+  <table>
+    <tr>
+      <th> ID </th>
+      <th> Slot </th>
+      <th> Car Reg. </th>
+      <th> Action </th>
+    </tr>
+
+    <% @tickets.each do |ticket| %>
+      <tr>
+        <td> <%= ticket.id %> </td>
+        <td> <%= ticket.spot_id %> </td>
+        <td> <%= ticket.car.registration_no %> </td>
+        <td>
+          <%= link_to "View ticket details", parking_lot_ticket_path(@parking_lot, ticket) %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+

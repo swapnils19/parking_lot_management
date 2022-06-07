@@ -1,0 +1,9 @@
+<h3>New Ticket for Parking <%= @parking_lot.id %> </h3>
+
+<%= render "form", ticket: @ticket %>
+
+<br>
+
+<div>
+  <%= link_to "Back to tickets", parking_lot_tickets_path(@parking_lot) %>
+</div>

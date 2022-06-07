@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_07_152224) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_07_184730) do
   create_table "cars", force: :cascade do |t|
     t.string "color"
     t.string "registration_no"
@@ -40,7 +40,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_07_152224) do
     t.index ["parking_lot_id"], name: "index_spots_on_parking_lot_id"
   end
 
+  create_table "tickets", force: :cascade do |t|
+    t.integer "parking_lot_id", null: false
+    t.integer "car_id", null: false
+    t.integer "spot_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_id"], name: "index_tickets_on_car_id"
+    t.index ["parking_lot_id"], name: "index_tickets_on_parking_lot_id"
+    t.index ["spot_id"], name: "index_tickets_on_spot_id"
+  end
+
   add_foreign_key "entrances", "parking_lots"
   add_foreign_key "spots", "entrances"
   add_foreign_key "spots", "parking_lots"
+  add_foreign_key "tickets", "cars"
+  add_foreign_key "tickets", "parking_lots"
+  add_foreign_key "tickets", "spots"
 end

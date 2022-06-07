@@ -13,7 +13,7 @@
 
   <div>
     <%= form.label :nearest_entrance, style: "display: block" %>
-    <%= form.collection_select :entrance_id, @parking_lot.entrances, :id, :id %>
+    <%= form.collection_select :entrance_id, @parking_lot.entrances.select(:id), :id, :id %>
   </div>
 
   <div>

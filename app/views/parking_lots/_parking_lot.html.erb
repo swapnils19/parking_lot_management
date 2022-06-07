@@ -7,5 +7,7 @@
     <%= button_to 'View Entrances', parking_lot_entrances_url(parking_lot), method: :get %>
     <br/>
     <%= button_to 'View Spots', parking_lot_spots_url(parking_lot), method: :get %>
+    <br/>
+    <%= button_to "View tickets", parking_lot_tickets_path(@parking_lot), method: :get %>
   </p>
 </div>
