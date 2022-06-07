@@ -1,0 +1,24 @@
+<p style="color: green"><%= notice %></p>
+
+<%= link_to "Go to Parking Lot list", parking_lots_path %>
+<br/>
+<%= link_to "Add a Car", new_car_path %>
+
+<h1>Cars</h1>
+
+<div id="cars">
+  <table>
+    <tr>
+      <th>Color</th>
+      <th>Registration Number</th>
+      <th>Action</th>
+    </tr>
+    <% @cars.each do |car| %>
+      <tr>
+        <td> <%= car.color %> </td>
+        <td> <%= car.registration_no %> </td>
+        <td><%= link_to "View Details", car %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
