@@ -1,0 +1,27 @@
+<p style="color: green"><%= notice %></p>
+<%= link_to "Create spot", new_parking_lot_spot_path %>
+<br/>
+<%= link_to "Back to Parking", parking_lot_path(@parking_lot) %>
+
+<h1>Spots for Parking <%= @parking_lot.id %></h1>
+
+<div id="spots">
+  <table>
+    <tr>
+      <th> Sr. no. </th>
+      <th> Nearest Entrance </th>
+      <th> Action </th>
+    </tr>
+
+    <% @spots.each_with_index do |spot, i| %>
+      <tr>
+        <td> <%= i + 1 %> </td>
+        <td> <%= spot.nearest_entrance.id %> </td>
+        <td>
+          <%= button_to "Delete this spot", parking_lot_spot_path(id: spot.id), method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+

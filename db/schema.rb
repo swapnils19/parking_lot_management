@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_03_194121) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_07_103915) do
   create_table "entrances", force: :cascade do |t|
     t.integer "parking_lot_id", null: false
     t.datetime "created_at", null: false
@@ -24,5 +24,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_03_194121) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "spots", force: :cascade do |t|
+    t.integer "parking_lot_id", null: false
+    t.integer "entrance_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["entrance_id"], name: "index_spots_on_entrance_id"
+    t.index ["parking_lot_id"], name: "index_spots_on_parking_lot_id"
+  end
+
   add_foreign_key "entrances", "parking_lots"
+  add_foreign_key "spots", "entrances"
+  add_foreign_key "spots", "parking_lots"
 end
