@@ -1,0 +1,5 @@
+<%= form_with url: cars_path, method: :get do |form| %>
+  <%= form.collection_select :color, @colors, :color, :color, prompt: true %>
+  <%= form.button 'Filter by Color' %>
+  <%= form.button 'Cleat filter', params: {color: nil} %>
+<% end %>

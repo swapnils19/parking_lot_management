@@ -5,6 +5,13 @@ class CarsController < ApplicationController
 
   # GET /cars or /cars.json
   def index
+    @colors = Car.select(:color).group(:color)
+
+    if params[:color].present?
+      @cars = Car.where(color: params[:color])
+      return
+    end
+
     @cars = Car.all
   end
 
