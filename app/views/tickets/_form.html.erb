@@ -12,13 +12,13 @@
   <% end %>
 
   <div>
-    <%= form.label :car_id, style: "display: block" %>
-    <%= form.collection_select :car_id, Car.select(:id), :id, :id %>
+    <%= form.label :car_registration_no, style: "display: block" %>
+    <%= form.collection_select :car_id, @available_cars, :id, :registration_no %>
   </div>
 
   <div>
     <%= form.label :spot_id, style: "display: block" %>
-    <%= form.collection_select :spot_id, @parking_lot.spots.select(:id), :id, :id %>
+    <%= form.collection_select :spot_id, @available_spots, :id, :id %>
   </div>
 
   <br/>

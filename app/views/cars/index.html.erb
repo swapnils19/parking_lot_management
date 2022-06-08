@@ -13,12 +13,14 @@
     <tr>
       <th>Color</th>
       <th>Registration Number</th>
+      <th>Ticket Number</th>
       <th>Action</th>
     </tr>
     <% @cars.each do |car| %>
       <tr>
         <td> <%= car.color %> </td>
         <td> <%= car.registration_no %> </td>
+        <td> <%= car.ticket&.id || '-' %> </td>
         <td><%= link_to "View Details", car %></td>
       </tr>
     <% end %>

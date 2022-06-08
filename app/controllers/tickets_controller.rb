@@ -6,7 +6,7 @@ class TicketsController < ApplicationController
 
   # GET /tickets or /tickets.json
   def index
-    @tickets = @parking_lot.tickets.all
+    @tickets = @parking_lot.tickets.includes(:car)
   end
 
   # GET /tickets/1 or /tickets/1.json
@@ -15,6 +15,8 @@ class TicketsController < ApplicationController
   # GET /tickets/new
   def new
     @ticket = @parking_lot.tickets.build
+    @available_spots = Spot.free_spots(@parking_lot).select(:id)
+    @available_cars = Car.unparked_cars
   end
 
   # POST /tickets or /tickets.json
@@ -23,7 +25,7 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @ticket.save
-        format.html { redirect_to parking_lot_ticket_url(@ticket, @parking_lot), notice: 'Ticket was successfully created.' }
+        format.html { redirect_to parking_lot_ticket_url(@parking_lot, @ticket), notice: 'Ticket was successfully created.' }
         format.json { render :show, status: :created, location: @ticket }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -37,7 +39,7 @@ class TicketsController < ApplicationController
     @ticket.destroy
 
     respond_to do |format|
-      format.html { redirect_to tickets_url, notice: 'Ticket was successfully destroyed.' }
+      format.html { redirect_to parking_lot_tickets_url(@parking_lot), notice: 'Ticket was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

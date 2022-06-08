@@ -12,7 +12,7 @@ class CarsController < ApplicationController
       return
     end
 
-    @cars = Car.all
+    @cars = Car.includes(:ticket)
   end
 
   # GET /cars/1 or /cars/1.json
