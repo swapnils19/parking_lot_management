@@ -15,8 +15,7 @@ class TicketsController < ApplicationController
   # GET /tickets/new
   def new
     @ticket = @parking_lot.tickets.build
-    @available_spots = Spot.free_spots(@parking_lot).select(:id)
-    @available_cars = Car.unparked_cars
+    set_form_collections
   end
 
   # POST /tickets or /tickets.json
@@ -28,6 +27,7 @@ class TicketsController < ApplicationController
         format.html { redirect_to parking_lot_ticket_url(@parking_lot, @ticket), notice: 'Ticket was successfully created.' }
         format.json { render :show, status: :created, location: @ticket }
       else
+        set_form_collections
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
       end
@@ -58,5 +58,10 @@ class TicketsController < ApplicationController
 
   def set_parking_lot
     @parking_lot = ParkingLot.find(params[:parking_lot_id])
+  end
+
+  def set_form_collections
+    @available_spots = Spot.free_spots(@parking_lot).select(:id)
+    @available_cars = Car.unparked_cars
   end
 end
