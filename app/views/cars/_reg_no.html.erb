@@ -1,0 +1,5 @@
+<%= form_with url: cars_path, method: :get do |form| %>
+  <%= form.collection_select :registration_no, @reg_nos, :registration_no, :registration_no, prompt: true %>
+  <%= form.button 'Filter by Registration No.' %>
+  <%= form.button 'Cleat filter', params: {registration_no: nil} %>
+<% end %>

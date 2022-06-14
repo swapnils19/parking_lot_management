@@ -6,9 +6,15 @@ class CarsController < ApplicationController
   # GET /cars or /cars.json
   def index
     @colors = Car.select(:color).group(:color)
+    @reg_nos = Car.select(:registration_no).group(:registration_no)
 
     if params[:color].present?
       @cars = Car.where(color: params[:color])
+      return
+    end
+
+    if params[:registration_no].present?
+      @cars = Car.where(registration_no: params[:registration_no])
       return
     end
 

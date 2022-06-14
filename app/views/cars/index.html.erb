@@ -7,6 +7,7 @@
 <h3>Cars</h3>
 
 <%= render 'colors' %>
+<%= render 'reg_no' %>
 
 <div id="cars">
   <table>
@@ -20,7 +21,7 @@
       <tr>
         <td> <%= car.color %> </td>
         <td> <%= car.registration_no %> </td>
-        <td> <%= car.ticket&.id || '-' %> </td>
+        <td> <%= car.ticket.present? ? link_to('View Ticket', parking_lot_ticket_path(car.parking_lot, car.ticket)) : '-' %> </td>
         <td><%= link_to "View Details", car %></td>
       </tr>
     <% end %>
